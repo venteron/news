@@ -1,0 +1,33 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--namespace="" 值必须和dao接口的路径保持一致-->
+<mapper namespace="com.dao.UserDao">
+
+   <!-- 登录-->
+    <select id="queryByUser" parameterType="User" resultType="User">
+        select * from user where username=#{username} and password=#{password}
+    </select>
+
+    <!--根据用户名查询用户-->
+    <select id="queryByUsername" parameterType="java.lang.String" resultType="com.pojo.User">
+    select * from user where username=#{username}
+    </select>
+
+    <!--查询所有用户-->
+    <select id="queryAll" resultType="com.pojo.User">
+    select * from user
+    </select>
+
+    <!--注册-->
+    <insert id="insertUser" parameterType="User">
+        insert into user(username,password) values (#{username},#{password})
+    </insert>
+
+    <update id="updateUser" parameterType="User">
+        update user set username=#{username},password=#{password},create_date=#{create_date},age=#{age} where id=#{id}
+    </update>
+
+    <delete id="deleteUser" parameterType="int">
+        delete from user where id=#{id}
+    </delete>
+
+</mapper>

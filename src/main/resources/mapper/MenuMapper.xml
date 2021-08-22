@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--映射文件中写的是数据增删查改的内容-->
+<!--namespace的值必须和dao接口的路径一致-->
+<mapper namespace="com.dao.MenuDao">
+    <!--id的值必须和接口中的方法名一致-->
+    <select id="queryMenusByRoleId" parameterType="int" resultType="com.pojo.Menu">
+        select m.* from role_menu rm,menu m where rm.mid=m.mid and rm.rid=#{roleId}
+    </select>
+</mapper>
